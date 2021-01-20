@@ -6,6 +6,9 @@
   <div class="col l6 m6 s12">
     <img class="circle" src=<?=base_url()."assets/images/fotos_usuarios/".$this->session->userdata('id').".jpg"?>>
     <h5><b><u>Información</u></b></h5>
+    <p><b>Área: &nbsp</b><?= $this->session->userdata('act_area'); ?></p>
+    <p><b>Cargo: &nbsp</b><?= $this->session->userdata('act_puesto'); ?></p>
+    <p><b>Empleado: &nbsp</b><?= $this->session->userdata('nombre'); ?></p>
     <p><b>Usuario: &nbsp</b><?= $this->session->userdata('username'); ?></p>
     <p><b>Correo: &nbsp</b>admin@grupoact.com</p>
   </div>

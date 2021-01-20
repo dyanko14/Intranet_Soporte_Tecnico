@@ -25,9 +25,18 @@ class Login extends CI_Controller {
  	}
 	public function index()
 	{
-		$this->load->view('header');
-		$this->load->view('login');
-		$this->load->view('footer');
+		if($this->session->userdata('acceso') == True)
+		{
+			$this->load->view('header');
+			$this->load->view('login_ok');
+			$this->load->view('footer');
+		}
+		else
+		{
+			$this->load->view('header');
+			$this->load->view('login');
+			$this->load->view('footer');
+		}
 	}
 	public function validate()
 	{

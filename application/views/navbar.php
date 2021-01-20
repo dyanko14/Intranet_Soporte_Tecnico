@@ -24,8 +24,8 @@
         <img src=<?=base_url()."assets/images/wallpaper/wallpaper_navbar_menu.jpg"?>>
       </div>
       <a href="#user"><img class="circle" src=<?=base_url()."assets/images/fotos_usuarios/".$this->session->userdata('id').".jpg"?>></a>
-      <a href="#name"><span class="white-text name"><?= $this->session->userdata('username'); ?></span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#name"><span class="white-text name"><?= $this->session->userdata('nombre'); ?></span></a>
+      <a href="#email"><span class="white-text email"><?= $this->session->userdata('username'); ?></span></a>
     </div></li>
     <li><a href=<?=base_url()."dashboard/"?>><i class="material-icons">dashboard</i>Dashboard</a></li>
     <li><a href=<?=base_url()."polizas/"?>><i class="material-icons">assignment</i>Pólizas</a></li>

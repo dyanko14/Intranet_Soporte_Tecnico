@@ -2,7 +2,7 @@
 
 <!--/ breadcrumb section -->
 <br>
-<nav class="grey darken-2">
+<nav class="blue-grey darken-4">
   <div class="nav-wrapper">
     <div class="col s12 ">
       <a class="breadcrumb">&nbsp&nbsp Seleccione una Póliza</a>

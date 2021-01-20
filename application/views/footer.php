@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
 $( document ).ready(function() {
+  $('.collapsible').collapsible();
   $('.dropdown-trigger').dropdown();
   $('.sidenav').sidenav();
   $('.tabs').tabs();

@@ -68,8 +68,8 @@ class Model_polizas extends CI_Model {
 	    edificios.edificio AS edificio,
 			polizas_proyectos.id AS id_poliza_proyecto,
 	    proyectos.id AS id_proyecto,
-	    proyectos.alias AS proyecto,
-	    proyectos.fecha_instalacion AS fecha_inst
+			proyectos.alias AS proyecto,
+      proyectos.numero AS num
 			FROM polizas_proyectos
 			INNER JOIN proyectos ON proyectos.id = polizas_proyectos.id_proyecto
 			INNER JOIN edificios ON edificios.id = proyectos.id_edificio
