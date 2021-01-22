@@ -35,6 +35,8 @@ class Polizas extends CI_Controller {
 		{
 			//--Retrieve data
 			$data['polizas'] = $this->Model_polizas->get_poliza_data($id_poliza);
+			$data['polizas_dias_restantes'] = $this->Model_polizas->get_poliza_dias_restantes($id_poliza);
+			$data['polizas_dias_transcurridos'] = $this->Model_polizas->get_poliza_dias_transcurridos($id_poliza);
 			$data['polizas_proyectos'] = $this->Model_polizas->get_poliza_proyectos($id_poliza);
 			$data['polizas_servicios'] = $this->Model_polizas->get_poliza_servicios($id_poliza);
 			//--

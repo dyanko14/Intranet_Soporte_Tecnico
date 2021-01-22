@@ -9,34 +9,36 @@ class Model_polizas extends CI_Model {
 	//............................................................................
 	public function get_polizas()
 	{
+		$query = $this->db->query("SET lc_time_names = 'es_MX'");
 		$query = $this->db->query("SELECT
 			polizas.id AS id_poliza,
-    	polizas.fecha_inicio,
-	    polizas.fecha_fin,
-	    polizas.mtto_anual,
-	    polizas.clave_sap,
+			DATE_FORMAT(polizas.fecha_inicio,'%d/%b/%Y') AS fecha_inicio,
+    	DATE_FORMAT(polizas.fecha_fin,'%d/%b/%Y') AS fecha_fin,
+			DATEDIFF (polizas.fecha_fin, NOW()) AS dias_restantes,
+		    polizas.mtto_anual,
+		    polizas.clave_sap,
 			polizas.vendedor,
-	    polizas.venta,
-	    polizas.moneda,
+		    polizas.venta,
+		    polizas.moneda,
+	      	polizas.alias AS poliza_alias,
 			polizas_categoria.id AS id_categoria,
 			polizas_categoria.categoria,
 			clientes.id AS id_cliente,
 			clientes.razon_social,
 			clientes.alias
-			FROM polizas
-			INNER JOIN polizas_categoria ON
-								 polizas_categoria.id = polizas.id_categoria
-			INNER JOIN clientes ON
-								 clientes.id = polizas.id_cliente");
+	FROM polizas
+	INNER JOIN polizas_categoria ON polizas_categoria.id = polizas.id_categoria
+	INNER JOIN clientes ON clientes.id = polizas.id_cliente");
 		return $query->result();
 	}
 	//............................................................................
 	public function get_poliza_data($id_poliza = null)
 	{
+		$query = $this->db->query("SET lc_time_names = 'es_MX'");
 		$query = $this->db->query("SELECT
 			polizas.id AS id_poliza,
-    	polizas.fecha_inicio,
-	    polizas.fecha_fin,
+			DATE_FORMAT(polizas.fecha_inicio,'%d/%b/%Y') AS fecha_inicio,
+    	DATE_FORMAT(polizas.fecha_fin,'%d/%b/%Y') AS fecha_fin,
 	    polizas.mtto_anual,
 	    polizas.clave_sap,
 			polizas.alias,
@@ -54,6 +56,30 @@ class Model_polizas extends CI_Model {
 			INNER JOIN clientes ON
 								 clientes.id = polizas.id_cliente
 			WHERE polizas.id = '$id_poliza' ");
+		return $query->result();
+	}
+	//............................................................................
+	public function get_poliza_dias_restantes($id_poliza = null)
+	{
+		$query = $this->db->query("SELECT DATEDIFF (polizas.fecha_fin, NOW())
+																AS dias_restantes FROM polizas
+																WHERE polizas.id = '$id_poliza' ");
+		return $query->result();
+	}
+	//............................................................................
+	public function get_poliza_dias_transcurridos($id_poliza = null)
+	{
+		$query = $this->db->query("SELECT DATEDIFF (NOW(), polizas.fecha_inicio)
+																AS dias_transcurridos FROM polizas
+																WHERE polizas.id = '$id_poliza' ");
+		return $query->result();
+	}
+	//............................................................................
+	public function get_poliza_count_edificios($id_poliza = null)
+	{
+		$query = $this->db->query("SELECT DATEDIFF (NOW(), polizas.fecha_inicio)
+																AS dias_transcurridos FROM polizas
+																WHERE polizas.id = '$id_poliza' ");
 		return $query->result();
 	}
 	//............................................................................
